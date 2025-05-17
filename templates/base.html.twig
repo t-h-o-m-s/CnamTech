@@ -35,7 +35,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="{{ path('admin') }}" class="nav-link text-white">
           Tableau de bord
         </a>
       </li>
@@ -44,11 +44,18 @@
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
          data-bs-toggle="dropdown">
-        <strong>Thomas</strong>
+        {% if app.user %}
+          <strong>{{ app.user.email }}</strong>
+        {% else %}
+          <strong>Non connecté</strong>
+        {% endif %}
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">Profil</a></li>
-        <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+        {% if app.user %}
+          <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a></li>
+        {% else %}
+          <li><a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

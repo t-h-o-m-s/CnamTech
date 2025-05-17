@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AccueilController extends AbstractController
 {
-    #[Route('/', name: 'app_accueil')]
+    #[Route('/', name: 'accueil')]
     public function index(TransportInterface $mailer): Response
     {
         $email = (new Email())
